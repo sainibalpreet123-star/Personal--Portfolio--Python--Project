@@ -1,0 +1,16 @@
+test_01_files_created (test_portfolio.PortfolioTests.test_01_files_created) ... ok
+test_02_content_present (test_portfolio.PortfolioTests.test_02_content_present) ... ok
+test_03_html_is_escaped (test_portfolio.PortfolioTests.test_03_html_is_escaped) ... ok
+test_04_unsafe_link_rejected (test_portfolio.PortfolioTests.test_04_unsafe_link_rejected) ... ok
+test_05_missing_field_rejected (test_portfolio.PortfolioTests.test_05_missing_field_rejected) ... ok
+test_06_skill_level_range (test_portfolio.PortfolioTests.test_06_skill_level_range) ... ok
+test_07_project_without_link_has_no_anchor (test_portfolio.PortfolioTests.test_07_project_without_link_has_no_anchor) ... ok
+test_08_placeholder_warning (test_portfolio.PortfolioTests.test_08_placeholder_warning) ... ok
+test_09_invalid_json_reported (test_portfolio.PortfolioTests.test_09_invalid_json_reported) ... ok
+test_10_navigation_anchors_exist (test_portfolio.PortfolioTests.test_10_navigation_anchors_exist) ... ok
+test_11_images_have_alt_text (test_portfolio.PortfolioTests.test_11_images_have_alt_text) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.785s
+
+OK

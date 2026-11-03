@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ p.name }} | Portfolio</title>
+  <meta name="description" content="{{ p.title }} - {{ p.tagline }}">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#home">{{ p.name }}</a>
+      <ul class="nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header id="home" class="hero">
+    <div class="wrap">
+      <p class="hello">Hello, I am</p>
+      <h1>{{ p.name }}</h1>
+      <p class="role">{{ p.title }}</p>
+      <p class="tagline">{{ p.tagline }}</p>
+      <p>
+        <a class="btn" href="#projects">View my projects</a>
+        <a class="btn ghost" href="#contact">Contact me</a>
+      </p>
+      <p class="loc">{{ p.location }}</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About me</h2>
+      {% for para in p.about %}<p>{{ para }}</p>{% endfor %}
+    </div>
+  </section>
+
+  <section id="skills" class="alt">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="chart"><img src="assets/skills.png" alt="Bar chart of self-assessed skill levels by category"></div>
+      {% for cat, names in groups %}
+      <p class="group"><strong>{{ cat }}:</strong>
+        {% for n in names %}<span class="chip">{{ n }}</span>{% endfor %}
+      </p>
+      {% endfor %}
+      <p class="small">Levels in the chart are self-assessed on a scale of 0 to 100.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      {% for pr in p.projects %}
+      <div class="card">
+        <h3>{{ pr.title }}</h3>
+        <p>{{ pr.description }}</p>
+        <p>{% for t in pr.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
+        {% if pr.url %}<p><a href="{{ pr.url }}" rel="noopener">View project &rarr;</a></p>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="education" class="alt">
+    <div class="wrap">
+      <h2>Education and achievements</h2>
+      {% for e in p.education %}
+      <div class="edu">
+        <h3>{{ e.title }} <span class="years">{{ e.years }}</span></h3>
+        <p>{{ e.place }}{% if e.note %}. {{ e.note }}{% endif %}</p>
+      </div>
+      {% endfor %}
+      {% if p.achievements %}
+      <h3 class="sub">Achievements</h3>
+      <ul>{% for a in p.achievements %}<li>{{ a }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p>I would be glad to hear about projects, internships, and learning opportunities.</p>
+      <p><a class="btn" href="mailto:{{ p.contact.email }}">Email me</a>
+      {% for l in p.contact.links %}<a class="btn ghost" href="{{ l.url }}" rel="noopener">{{ l.label }}</a>{% endfor %}</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">&copy; {{ year }} {{ p.name }}. Built with Python, Jinja2, Pandas, and Matplotlib.</div>
+  </footer>
+</body>
+</html>
